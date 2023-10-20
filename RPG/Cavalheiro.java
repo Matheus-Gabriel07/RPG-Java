@@ -1,13 +1,8 @@
 package RPG;
+import java.util.*;
 
 interface Cavalheiro {
    void atacar();
-
-   void defender();
-
-   void desviar();
-
-   void esperar();
 }
 
 class RpgCavalheiro implements Cavalheiro {
@@ -21,21 +16,21 @@ class RpgCavalheiro implements Cavalheiro {
        return nome;
    }
 
+   Random sorteio = new Random();
+   int vidaHeroi = 100;
+   int vidaVilao = 100;
+   
    @Override
-   public void atacar() {
-      System.out.println("O cavallheiro está atacando o vilão com a sua excalibur");
+   public void atacar(){
+      System.out.println("O herói decide atacar");
+      int sortearAtaque = sorteio.nextInt(9);
+      System.out.println(sortearAtaque);
+      if (sortearAtaque %2 == 0) {
+         System.out.println("O herói acertou o ataque. \n"
+            + "O vilão levou 20 de dano, o vilão está com " + vidaVilao + " pontos de vida");
+         vidaVilao =- 20;
+      } else {
+         System.out.println("O herói errou o ataque");
+      }
    }
-
-   public void defender() {
-      System.out.println("O cavalheiro se denfedendeu com o seu escudo leão dorado ");
-   }
-
-   public void desviar() {
-      System.out.println("O cavalheiro desviou de um ataque mortal ");
-   }
-
-   public void esperar() {
-      System.out.println("O cavalheiro decidiu esperar\n");
-   }
-
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Night {
     public static void dormir() {
+        RpgCavalheiro rpgCavalheiro = new RpgCavalheiro(null);
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
         int aleatorio = random.nextInt(10);
@@ -33,8 +34,12 @@ public class Night {
                             if (opcao == 1) {
                                 System.out.println("Vilão te pega");
                                 // Batalha
+                                rpgCavalheiro.atacar();
+
                             } else if (opcao == 2) {
                                 // Batalha
+                                rpgCavalheiro.atacar();
+
                             } else {
                                 break;
                             }
@@ -47,7 +52,10 @@ public class Night {
 
                             if (opcao == 1) {
                                 System.out.println("Vilão te pega");
+
                                 // Batalha
+                                rpgCavalheiro.atacar();
+
                             } else if (opcao == 2) {
                                 System.out.println(
                                         "Enquanto você está esperando alguma movimentação, surge uma criatura terrível, DESCRIÇÃO");
@@ -58,10 +66,16 @@ public class Night {
 
                                 if (opcao == 1) {
                                     System.out.println("Vilão te pega");
+
                                     // Batalha
+                                    rpgCavalheiro.atacar();
+
                                 } else if (opcao == 2) {
                                     // Batalha
+                                    rpgCavalheiro.atacar();
+
                                 } else {
+                                    rpgCavalheiro.atacar();
                                     break;
                                 }
                             } else {
@@ -89,7 +103,7 @@ public class Night {
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
-            
+
             System.out.println(
                     "Você decidiu esperar, e esperou tanto tempo, que a chuva inmundou o chão e morreu afogado.");
         }
