@@ -1,3 +1,4 @@
+package RPG;
 import java.util.Random;
 import java.util.Scanner;
 

@@ -1,3 +1,4 @@
+package RPG;
 public abstract class Settings {
     public static void start(){}
     public void timeDelay(int millis){}
