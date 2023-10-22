@@ -1,15 +1,25 @@
+/** Classe do jogador do RPG qual cria o Jogador e realiza a batalha
+ *  contra a critaura final
+ * 
+ *  @version 1.4
+ * 
+ *  @author Kaique Magalhães
+ *  @author Willian
+ */
+
 package RPG;
 import java.util.Random;
 import java.util.Scanner;
 
 interface JogadorSettings {
-    void atacar();
+    int atacar();
 }
 
 class Jogador implements JogadorSettings {
-    String nome;
     Scanner sc = new Scanner(System.in);
+    Delay delay = new Delay();
 
+    String nome;
     public Jogador(String nome) {
         this.nome = nome;
     }
@@ -23,7 +33,7 @@ class Jogador implements JogadorSettings {
     int vidaVilao = 100;
 
     @Override
-    public void atacar() {
+    public int atacar() {
         boolean batalha = true;
         do {
             System.out.println("Você quer atacar?\n" +
@@ -31,56 +41,53 @@ class Jogador implements JogadorSettings {
                     "2- Não");
             int atacarSouN = sc.nextInt();
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            ;
+            delay.timeDelay(500);
+            delay.spacePrint(3);
 
-            System.out.println("Vida do Herói: " + vidaHeroi);
-            System.out.println("Vida do Vilão: " + vidaVilao);
+            System.out.println("________________________________" +
+                    "\n Estatísticas" +
+                    "\nVida do " + getNome() + ": " + vidaHeroi +
+                    "\nVida da criatura: " + vidaVilao +
+                    "\n________________________________\n");
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {};
+            delay.timeDelay(1250);
 
             if (atacarSouN == 1) {
-                System.out.println("O herói decide atacar");
+                System.out.println("O " + getNome() + " decide atacar...");
                 int sortearAtaque = sorteio.nextInt(9);
-                System.out.println(sortearAtaque);
+
                 if (sortearAtaque % 2 == 0) {
                     vidaVilao = vidaVilao - 20;
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {};
+                    delay.timeDelay(250);
 
-                    System.out.println("O herói acertou o ataque. \n"
-                            + "O vilão levou 20 de dano, o vilão está com " + vidaVilao + " pontos de vida.");
+                    System.out.println("O " + getNome() + " acertou o ataque. \n"
+                            + "A criatura levou 20 de dano, e está com " + vidaVilao + " pontos de vida.");
+                    delay.spacePrint(3);
 
                 } else {
                     vidaHeroi = vidaHeroi - 20;
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e){};
+                    delay.timeDelay(1250);
 
-                    System.out.println("O herói errou o ataque. \n"
-                            + "O herói levou 20 de dano, o herói está com " + vidaHeroi + " pontos de vida.");
+                    System.out.println("O " + getNome() + " errou o ataque. \n"
+                            + "O " + getNome() + " levou 20 de dano, e está com " + vidaHeroi + " pontos de vida.");
+                    delay.spacePrint(3);
                 }
             }
             if (atacarSouN == 2) {
                 vidaHeroi = vidaHeroi - 20;
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){};
+                delay.timeDelay(250);
 
-                System.out.println("O vilão atacou e o herói levou 20 de dano, o herói está com " + vidaHeroi
+                System.out.println("A criatura atacou e o " + getNome() + " levou 20 de dano, o " + getNome() + " está com " + vidaHeroi
                         + " pontos de vida.");
+                delay.spacePrint(3);
+
             }
             if (vidaHeroi == 0 || vidaVilao == 0) {
-                batalha = false;
+                return 1;
             }
 
         } while (batalha);
+        return 0;
 
     }
 }

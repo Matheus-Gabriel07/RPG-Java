@@ -1,4 +1,15 @@
+/** Sub classe de 'Settings' que controla a linha temporal, na qual
+ *  o 'Jogador' está jogando
+ * 
+ *  @version 1.2
+ * 
+ *  @author Kaique Magalhães
+ *  @author Matheus Gabriel
+ *  @author Willian
+ */
+
 package RPG;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +25,7 @@ public class HistoryRGP extends Settings {
 
         System.out.println("Carregando...");
         delay.timeDelay(1500);
-        delay.SpacePrint(10);
+        delay.spacePrint(10);
 
         Florest(nome);
         sc.close();
@@ -59,7 +70,7 @@ public class HistoryRGP extends Settings {
                 default:
                     delay.timeDelay(250);
                     System.out.println("Selecione uma opção valida.");
-                    delay.SpacePrint(3);
+                    delay.spacePrint(3);
                     break;
             }
         } while (historyLoop);
@@ -73,7 +84,7 @@ public class HistoryRGP extends Settings {
         Delay delay = new Delay();
         Random random = new Random();
         int sorteio = random.nextInt(10);
-        delay.SpacePrint(10);
+        delay.spacePrint(10);
 
         if (sorteio >= 1 && sorteio <= 9) {
             System.out.println("\tEnquanto você dorme, rachaduras começam a surgir sobre o chão, e com o alto som\n"
@@ -96,9 +107,10 @@ public class HistoryRGP extends Settings {
 
                         if (sorteio > 1 && sorteio <= 9) {
                             System.out.println("As rachaduras ficaram maiores, e você acabou caindo...");
-                            delay.SpacePrint(3);
+
+                            delay.spacePrint(3);
                             System.out.println("Carregando história...");
-                            delay.SpacePrint(10);
+                            delay.spacePrint(10);
                             delay.timeDelay(1500);
 
                             if (sorteio > 5) {
@@ -111,6 +123,7 @@ public class HistoryRGP extends Settings {
                             System.out.println(
                                     "Uma pedra acaba caindo em sua cabeça enquanto corria, e acabou morrendo.\n"
                                             + "\bFIM DE JOGO");
+                            System.exit(0);
                             break;
                         }
                         historyLoop = false;
@@ -120,11 +133,13 @@ public class HistoryRGP extends Settings {
                         System.out.println("As rachaduras ficaram maiores, e acabou caindo e morrendo."
                                 + "\bFIM DE JOGO");
                         historyLoop = false;
+                        System.exit(0);
                         break;
 
                     default:
                         System.out.println("As rachaduras ficaram maiores, e acabou caindo e morrendo."
                                 + "\bFIM DE JOGO");
+                        System.exit(0);
                         break;
                 }
             } while (historyLoop);
@@ -140,6 +155,7 @@ public class HistoryRGP extends Settings {
 
         System.out.println("Sons, esse estranhos, se astralam e surge uma criatura terrível");
         boolean historyLoop = true;
+        int resultHistory = 0;
 
         do {
             System.out.println("O que " + jogador.getNome() + " irá fazer?\n" +
@@ -150,17 +166,19 @@ public class HistoryRGP extends Settings {
 
             if (opcao == 1) {
                 System.out.println("A criatura te pegou...");
-                delay.SpacePrint(3);
+                delay.spacePrint(3);
                 System.out.println("Carregando luta...");
                 delay.timeDelay(1500);
-                delay.SpacePrint(10);
-                jogador.atacar();
+                delay.spacePrint(10);
+                resultHistory = jogador.atacar();
+                endStory(jogador.getNome(), resultHistory);
                 historyLoop = false;
             } else if (opcao == 2) {
                 System.out.println("Carregando luta...");
                 delay.timeDelay(1500);
-                delay.SpacePrint(10);
-                jogador.atacar();
+                delay.spacePrint(10);
+                resultHistory = jogador.atacar();
+                endStory(jogador.getNome(), resultHistory);
                 historyLoop = false;
             } else {
                 System.out.println("Opção invalida.");
@@ -169,5 +187,50 @@ public class HistoryRGP extends Settings {
         sc.close();
     }
 
-    public static void endStory(String playerName) {}
+    public static void endStory(String playerName, int resultBattle) {
+        Scanner sc = new Scanner(System.in);
+        Jogador jogador = new Jogador(playerName);
+        Delay delay = new Delay();
+        delay.timeDelay(1500);
+
+        if (resultBattle == 1) {
+            System.out.println(jogador.getNome() + " venceu a luta contra a criatura. E como se fosse num passe de\n" +
+                    "magica, o céu se abriu e chão que estava sob " + jogador.getNome() + " se ergue até a superfície\n" +
+                    "Quando perce o céu estrelado, se pergunta para onde aquela chuva se foi. E é do além, que começa a escutar\n" +
+                    "alguem o chamando e lhe cutucando, começa a piscar e percebe que tudo o que passou foi somente o fruto da sua\n" +
+                    "imaginação, e que nada foi real.");
+
+            delay.timeDelay(5000);
+            delay.spacePrint(15);
+            System.out.println("\t=====================\n" +
+                    "\tObrigado por jogar!");
+            delay.timeDelay(1000);
+            System.out.println("\nCriadores: \n" +
+                    "Kaique Magalhães\n" +
+                    "Matheus Gabriel\n" +
+                    "Willian\n\n" +
+                    "_____________________________\n" +
+                    "Veja outros projetos no github \n" +
+                    "@Matheus-Gabriel07");
+            delay.timeDelay(1000);
+
+        } else {
+            System.out.println("A criatura o matou com golpe final, fazendo " + jogador.getNome() + " apagar. Quando abre\n" +
+            "seus olhos, percebe a vastidão do escuro o assombrando.");
+            delay.timeDelay(5000);
+            delay.spacePrint(15);
+            System.out.println("\t=====================\n" +
+                    "\tObrigado por jogar!");
+            delay.timeDelay(1000);
+            System.out.println("\nCriadores: \n" +
+                    "Kaique Magalhães\n" +
+                    "Matheus Gabriel\n" +
+                    "Willian\n\n" +
+                    "_____________________________\n" +
+                    "Veja outros projetos no github \n" +
+                    "@Matheus-Gabriel07");
+            delay.timeDelay(1000);
+        }
+        sc.close();
+    }
 }
