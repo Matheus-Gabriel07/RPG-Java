@@ -3,7 +3,7 @@
  *  @version 1.1
  * 
  *  @author Matheus Gabriel
- *  @author Willian
+ *  @author Willian de José
  *  @author Kaique Magalhães
  */
 

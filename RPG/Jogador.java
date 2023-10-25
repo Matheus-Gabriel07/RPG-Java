@@ -4,7 +4,7 @@
  *  @version 1.4
  * 
  *  @author Kaique Magalhães
- *  @author Willian
+ *  @author Willian de José
  */
 
 package RPG;
