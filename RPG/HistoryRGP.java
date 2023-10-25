@@ -5,7 +5,7 @@
  * 
  *  @author Kaique Magalhães
  *  @author Matheus Gabriel
- *  @author Willian de José
+ *  @author Willian José
  */
 
 package RPG;
@@ -95,7 +95,7 @@ public class HistoryRGP extends Settings {
             boolean historyLoop = true;
 
             do {
-                System.out.println("O que o" + jogador.getNome() + " irá fazer?\n"
+                System.out.println("O que o " + jogador.getNome() + " irá fazer?\n"
                         + "1)Sair correndo\n"
                         + "2)Decide ficar na barraca\n");
                 int opcao = sc.nextInt();
@@ -214,7 +214,7 @@ public class HistoryRGP extends Settings {
                     "@Matheus-Gabriel07");
             delay.timeDelay(1000);
 
-        } else {
+        } else if( resultBattle == 0) {
             System.out.println("A criatura o matou com golpe final, fazendo " + jogador.getNome() + " apagar. Quando abre\n" +
             "seus olhos, percebe a vastidão do escuro o assombrando.");
             delay.timeDelay(5000);
@@ -228,7 +228,9 @@ public class HistoryRGP extends Settings {
                     "Willian\n\n" +
                     "_____________________________\n" +
                     "Veja outros projetos no github \n" +
-                    "@Matheus-Gabriel07");
+                    "@Matheus-Gabriel07\n" + 
+                    "@Kaique-ms27\n" +
+                    "@Willjj862\n");
             delay.timeDelay(1000);
         }
         sc.close();

@@ -4,7 +4,7 @@
  *  @version 1.4
  * 
  *  @author Kaique Magalhães
- *  @author Willian de José
+ *  @author Willian José
  */
 
 package RPG;
@@ -82,12 +82,15 @@ class Jogador implements JogadorSettings {
                 delay.spacePrint(3);
 
             }
-            if (vidaHeroi == 0 || vidaVilao == 0) {
+            if (vidaVilao == 0) {
                 return 1;
+            } else if(vidaHeroi == 0) {
+                return 0;
+            } else{
+                batalha = true;
             }
 
         } while (batalha);
-        return 0;
-
+        return 2;
     }
 }
