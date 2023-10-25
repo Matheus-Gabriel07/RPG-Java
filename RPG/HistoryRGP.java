@@ -5,7 +5,7 @@
  * 
  *  @author Kaique Magalhães
  *  @author Matheus Gabriel
- *  @author Willian
+ *  @author Willian de José
  */
 
 package RPG;
@@ -63,7 +63,7 @@ public class HistoryRGP extends Settings {
                 case 2:
                     delay.timeDelay(500);
                     System.out.println(
-                            "Você decidiu esperar, e esperou tanto tempo, que a chuva /imundou o chão e morreu afogado.");
+                            "Você decidiu esperar, e esperou tanto tempo, que a chuva inundou o chão e morreu afogado.");
                     historyLoop = false;
                     break;
 
